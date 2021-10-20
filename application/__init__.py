@@ -6,7 +6,7 @@ from application.config import Config
 
 def create_app():
     app = Flask(__name__,
-                template_folder='../templates',
+                template_folder=Config.template_folder,
                 static_folder='')
 
     #初始化配置文件

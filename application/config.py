@@ -1,7 +1,7 @@
 #配置文件
 class Config:
     DEBUG = True
-    template_folder = 'D:\python_project\pythonProject\templates'
+    template_folder = 'D:\\python_project\\pythonProject\\templates'
     static_folder = 'staic'
 
     #mysql数据源
