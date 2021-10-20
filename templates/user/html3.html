@@ -1,0 +1,33 @@
+{% extends 'user/base.html' %}
+{% block tile %}
+    用户展示中心
+{% endblock %}
+
+{% block middle %}
+    <h1>登录成功</h1>
+
+<span> 当前的用户人数是： {{ users |length }}人  </span>
+    <table border="1" width="60%">
+    {% for user in users %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.rdatetime }}</td>
+            <td>
+                <form action="update">
+                    <input type="submit" value="修改">
+                </form>
+
+                <form action="del">
+                    <input type="submit" value="删除">
+                </form>
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </table>
+{% endblock %}

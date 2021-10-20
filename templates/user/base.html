@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {% block title %}
+        父模板的tile_用户中心
+    {% endblock %} </title>
+
+    {% block  mycss %}
+        {# 预留样式#}
+    {% endblock %}
+</head>
+<body>
+
+<style>
+    #header{
+        height: 50px;
+        background-color: deepskyblue;
+    }
+    #header ul {
+        list-style: none;
+        height: 50px;
+    }
+    #header ul li {
+        float: left;
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 50px;
+    }
+    #middle{
+        height: 550px;
+    }
+    #footer{
+        height: 50px;
+        line-height: 50px;
+        background-color: deepskyblue;
+    }
+    #footer ul{
+        height: 50px;
+        list-style: none;
+      }
+    #footer ul li {
+        float: left;
+        height: 50px;
+        width: 100px;
+        text-align: center;
+        font-size: 20px;
+        line-height: 50px;
+      }
+
+</style>
+
+
+<div id="header">
+
+<ul>
+    <li><a href=""> 首页 </a></li>
+    <li><a href=""> 文档 </a></li>
+    <li><a href=""> api </a></li>
+    <li><a href=""> 支持 </a></li>
+    <li><a href=""> 我的应用 </a></li>
+    <li>
+        <form action="login">
+            <input type="submit" name="login" value="登录">
+        </form>
+    </li>
+
+    <li>
+        <form action="register">
+            <input type="submit" name="regisrer" value="注册">
+        </form>
+    </li>
+
+    <li>
+        <form action="show">
+            <input type="submit" name="show" value="用户信息">
+        </form>
+    </li>
+
+</ul>
+</div>
+
+<div id="middle">
+{% block middle %}{#网页中间部分#}{% endblock %}
+</div>
+
+<div id="footer">
+<ul>
+    <li><a href=""> 关于我们 </a></li>
+    <li><a href=""> 经纬网 </a></li>
+    <li><a href=""> 公共主页 </a></li>
+    <li><a href=""> 开放平台 </a></li>
+    <li><a href=""> 品牌营销 </a></li>
+    <li><a href=""> 客服帮助 </a></li>
+</ul>
+</div>
+
+{% block myjs %}
+{#    预留js#}
+{% endblock %}
+</body>
+
+</html>

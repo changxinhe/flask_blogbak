@@ -1,0 +1,40 @@
+{% extends 'user/base.html' %}
+{% block tile %}
+    用户展示中心
+{% endblock %}
+
+{% block middle %}
+    <h1>用户信息</h1>
+
+<span> 当前的用户人数是： {{ users |length }}人  </span>
+    <form action="user_search" method="post">
+        <input type="text" name="search" placeholder="请输入用户名或者手机号码">
+        <input type="submit" value="搜索" >
+   </form>
+    <table border="1" width="60%">
+    <tr>
+        <th>序号</th>
+        <th>用户名</th>
+        <th>手机号</th>
+        <th>注册时间</th>
+        <th>操作</th>
+    </tr>
+    
+    {% for user in users %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.rdatetime }}</td>
+            <td>
+                {#创建链接，发送一个get请求#}
+                <a href="{{ url_for('user.user_update')}}?id={{ user.id }}">修改</a>
+                <a href="{{ url_for('user.user_del')}}?id={{ user.id }}">删除</a>
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </table>
+{% endblock %}
