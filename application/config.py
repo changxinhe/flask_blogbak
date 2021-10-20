@@ -4,7 +4,7 @@ class Config:
     template_folder = 'D:\\python_project\\pythonProject\\templates'
     static_folder = 'staic'
 
-    #mysql数据源
+    #mysql数据源s
     SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:vvZh0DYi@47.110.161.170:3306/flask'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
