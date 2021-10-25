@@ -12,9 +12,13 @@ class User(db.Model):
     username = db.Column(db.String(15),unique=True,nullable=False)
     password = db.Column(db.String(64),nullable=False)
     phone = db.Column(db.String(12),nullable=False)
+    email = db.Column(db.String(30))
+    icon = db.Column(db.String(100))
     #默认使当前系统时间
     rdatetime =db.Column(db.DateTime,default=datetime.datetime.now)
     isdelete = db.Column(db.Boolean,default=0)
+    #一对多，增加一个字段
+    articles = db.relationship('Article',backref='user')
 
     def __init__(self):
         return self.username
