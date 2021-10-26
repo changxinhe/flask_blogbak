@@ -1,5 +1,6 @@
 from flask import  Flask
 from application import config
+from application.article.view import article_bp
 from application.datasource import db
 from application.user.view import user_bp
 from application.config import Config
@@ -17,5 +18,5 @@ def create_app():
 
     #注册视图函数
     app.register_blueprint(user_bp)
-
+    app.register_blueprint(article_bp)
     return app

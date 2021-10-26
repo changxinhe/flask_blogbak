@@ -11,6 +11,4 @@ migrate = Migrate(app=app, db=db)
 manager.add_command('db' ,MigrateCommand)
 
 if __name__ == '__main__':
-    manager.run(
-        port = 80
-    )
+    manager.run()

@@ -5,14 +5,22 @@
     <title>添加文章</title>
 </head>
 <body>
-<from action="{{url_for()}}",method="post">
+<form action="{{ url_for('article.publish_article') }}" method="post">
   <p><input type="text" name="title" placeholder="文章标题"></p>
   <p>
-      <textarea cols="50" rows="10" placeholder="输入文章标题内容"></textarea>
+      <textarea cols="50" rows="10" placeholder="输入文章标题内容" name="content"></textarea>
   </p>
-  <p></p>
+  <p>
+      用户：
+      <select name="uid">
+          <option value="0">选择用户</option>
+          {% for user in users %}
+            <option value="{{user.id}}">  {{ user.username }}</option>
+          {% endfor %}
+      </select>
+  </p>
   <p><input type="submit" value="添加文章"></p>
-</from>
+</form>
 
 </body>
 </html>

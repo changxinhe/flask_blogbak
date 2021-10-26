@@ -11,12 +11,13 @@
     </style>
 </head>
 <body>
-{% for article  in articles %}
+
+<!--根据作者找文章-->
+{% for article  in users.articles %}
     <div id="container"  >
         <p>
             <h3> {{ article.title }}</h3>
-<!--根据文章找作者-->
-        作者：{{ article.user.username }}
+        作者：{{ users.username }}
         </p>
         <p> {{ article.content }} </p>
         <p> <div> {{ article.pdatetime }} </div></p>
