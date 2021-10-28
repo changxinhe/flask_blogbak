@@ -35,3 +35,7 @@ def shows2_article():
     id =request.args.get('id')
     users = User.query.get(id)
     return render_template('/article/show2.html',users=users)
+
+@article_bp.route('/test')
+def test():
+    return render_template('user/register.html')

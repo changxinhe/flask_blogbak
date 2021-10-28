@@ -4,7 +4,7 @@ from sqlalchemy import or_
 from application.user.modle import User
 from application import db
 
-user_bp =Blueprint('user',__name__)
+user_bp =Blueprint('userbak',__name__)
 
 #用户注册
 @user_bp.route('/register', methods = ['GET', 'POST'])
@@ -25,19 +25,19 @@ def register():
             #提交缓存
             db.session.commit()
             #注册成功，跳转页面
-            return redirect(url_for('user.user_center'))
+            return redirect(url_for('userbak.user_center'))
             #return  redirect('/show')
         else:
             return '两次密码不一致'
 
-    return render_template('user/register.html')
+    return render_template('userbak/register.html')
 
 #用户信息展示
 @user_bp.route('/show')
 def user_center():
     #查询数据库数据
     users = User.query.filter(User.isdelete==0).all()
-    return  render_template('user/show.html',users=users)
+    return  render_template('userbak/show.html',users=users)
 
 
 #用户修改信息
@@ -54,11 +54,11 @@ def user_update():
         user.phone = phone
         #提交数据库
         db.session.commit()
-        return redirect(url_for('user.user_center'))
+        return redirect(url_for('userbak.user_center'))
     else:
         id = request.args.get('id')
         user = User.query.get(id)
-        return render_template('user/update.html',user=user)
+        return render_template('userbak/update.html',user=user)
 
 #删除用户
 @user_bp.route('/user_del',methods=['POST','GET'])
@@ -68,7 +68,7 @@ def user_del():
     #逻辑删除
     user.isdelete = 1
     db.session.commit()
-    return redirect(url_for('user.user_center'))
+    return redirect(url_for('userbak.user_center'))
 
 #用户搜索
 @user_bp.route('/user_search',methods=['POST','GET'])
@@ -77,7 +77,7 @@ def user_search():
     users = User.query.filter(User.isdelete==0).filter(or_(
         User.username.contains(user_input),
         User.phone.contains(user_input))).all()
-    return  render_template('user/show.html',users=users)
+    return  render_template('userbak/show.html',users=users)
 
 #用户登录
 @user_bp.route('/login',methods=['POST','GET'])
@@ -90,8 +90,8 @@ def user_login():
         for u in login_user():
             if u.password == r_password:
                 users = User.query.filter_by(isdelete = 0).filter_by(username=username).all()
-                return render_template('user/show2.html',users=users)
+                return render_template('userbak/show2.html',users=users)
             else:
-                return render_template('user/login.html',msg='账号或密码错误')
+                return render_template('userbak/login.html',msg='账号或密码错误')
     else:
-        return render_template('user/login.html')
+        return render_template('userbak/login.html')

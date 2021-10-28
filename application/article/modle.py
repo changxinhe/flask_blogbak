@@ -14,4 +14,13 @@ class Article(db.Model):
     save_num = db.Column(db.Integer,default=0)
     love_num = db.Column(db.Integer,default=0)
     #外键
-    user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
+    user_id = db.Column(db.Integer,db.ForeignKey('userbak.id'),nullable=False)
+
+class Comment(db.Model):
+    __tablename__ = 'comment'
+    id = db.Column(db.Integer,primary_key=True,autoincrement=True)
+    comment = db.Column(db.String(255),nullable=False)
+    #外键用户
+    user_id = db.Column(db.Integer,db.ForeignKey('userbak.id'),nullable=False)
+    #外键文章
+    article_id = db.Column(db.Integer,db.ForeignKey('article.id'),nullable=False)

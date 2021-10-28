@@ -18,7 +18,7 @@ class User(db.Model):
     rdatetime =db.Column(db.DateTime,default=datetime.datetime.now)
     isdelete = db.Column(db.Boolean,default=0)
     #一对多，增加一个字段
-    articles = db.relationship('Article',backref='user')
+    articles = db.relationship('Article',backref='userbak')
 
     def __init__(self):
         return self.username
