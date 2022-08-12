@@ -26,6 +26,7 @@ def user_register():
     else:
         return render_template('user/register.html')
 
+#用户登录
 @user_bp.route('/login',methods=['POST','GET'])
 def user_login():
     if request.method == 'POST':

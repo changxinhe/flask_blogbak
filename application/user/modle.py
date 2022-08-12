@@ -12,7 +12,7 @@ class User(db.Model):
     show_name = db.Column(db.String(15),default='用户X')
     username = db.Column(db.String(15),unique=True,nullable=False)
     password = db.Column(db.String(64),nullable=False)
-    phone = db.Column(db.String(12),nullable=False)
+    phone = db.Column(db.String(12),nullable=False,unique=True)
     email = db.Column(db.String(30))
     icon = db.Column(db.String(100))
     #默认使当前系统时间
